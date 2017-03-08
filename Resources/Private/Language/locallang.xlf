@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
+		<header/>
+		<body>
+			<trans-unit id="tx_easyquiz_domain_model_quiz">
+				<source>Quiz</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quiz.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quiz.questions">
+				<source>Questions</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quiz.results">
+				<source>Results</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_questions">
+				<source>Questions</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_questions.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_questions.question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_questions.explanation">
+				<source>Explanation</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_questions.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_questions.multiple_answers">
+				<source>Multiple Answers</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_questions.answers">
+				<source>Answers</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_answers">
+				<source>Answers</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_answers.answer">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_answers.points">
+				<source>Points</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_result">
+				<source>Result</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_result.min_points">
+				<source>Min Points</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_result.max_points">
+				<source>Max Points</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_result.page">
+				<source>Page</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quizparticipation">
+				<source>Quiz Participation</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.session">
+				<source>Session</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.quiz">
+				<source>Quiz</source>
+			</trans-unit>
+			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.answers">
+				<source>Answers</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

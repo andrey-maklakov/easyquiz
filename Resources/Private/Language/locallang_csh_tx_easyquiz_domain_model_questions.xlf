@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="question.description">
+				<source>question</source>
+			</trans-unit>
+			<trans-unit id="explanation.description">
+				<source>explanation</source>
+			</trans-unit>
+			<trans-unit id="image.description">
+				<source>image</source>
+			</trans-unit>
+			<trans-unit id="multiple_answers.description">
+				<source>multipleAnswers</source>
+			</trans-unit>
+			<trans-unit id="answers.description">
+				<source>answers</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

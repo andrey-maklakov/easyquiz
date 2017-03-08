@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
+		<header/>
+		<body>
+			<trans-unit id="min_points.description">
+				<source>minPoints</source>
+			</trans-unit>
+			<trans-unit id="max_points.description">
+				<source>maxPoints</source>
+			</trans-unit>
+			<trans-unit id="page.description">
+				<source>page</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
