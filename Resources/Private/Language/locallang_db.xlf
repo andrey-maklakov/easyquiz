@@ -3,6 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
 		<header/>
 		<body>
+			<trans-unit id="tx_easyquiz_label.language">
+				<source>Language</source>
+			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quiz">
 				<source>Quiz</source>
 			</trans-unit>

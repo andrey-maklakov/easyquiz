@@ -3,6 +3,8 @@ return array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_domain_model_result',
 		'label' => 'min_points',
+    'label_alt' => 'max_points',
+    'label_alt_force' => TRUE,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -26,7 +28,7 @@ return array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, min_points, max_points, page',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, min_points, max_points, page, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'min_points, max_points, page, --div--;LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_label.language, sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -138,9 +140,21 @@ return array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_domain_model_result.page',
 			'config' => array(
-				'type' => 'input',
-				'size' => 4,
-				'eval' => 'int'
+				'type' => 'group',
+        'internal_type' => 'db',
+        'allowed' => 'pages',
+        'maxitems' => 1,
+        'minitems' => 1,
+        'show_thumbs' => 1,
+        'size' => 1,
+        'wizards' => array(
+          'suggest' => array(
+            'type' => 'suggest',
+            'default' => array(
+              'additionalSearchFields' => 'nav_title, alias, url'
+            )
+          )
+        )
 			)
 		),
 		

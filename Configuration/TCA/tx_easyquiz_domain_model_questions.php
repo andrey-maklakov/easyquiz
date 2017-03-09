@@ -26,7 +26,7 @@ return array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, question, explanation, image, multiple_answers, answers',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, question;;;richtext:rte_transform[mode=ts_links], explanation;;;richtext:rte_transform[mode=ts_links], image, multiple_answers, answers, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'title, question;;;richtext:rte_transform[mode=ts_links], explanation;;;richtext:rte_transform[mode=ts_links], image, multiple_answers, --div--;LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_domain_model_questions.answers, answers, --div--;LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_label.language, sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource;;1,  --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, hidden, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
