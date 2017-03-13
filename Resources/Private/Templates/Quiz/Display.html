@@ -9,7 +9,9 @@
               <f:format.html>{question.explanation}</f:format.html>
             </f:then>
             <f:else>
+              <f:form.hidden name="expectAnswersForQuestion" value="{display.question}" />
               <f:format.html>{question.question}</f:format.html>
+              <f:if condition="{inputMissing}"><p><strong><f:translate key="tx_easyquiz.display_quiz.please_choose" /></strong></p></f:if>
               <f:if condition="{question.multipleAnswers}">
                 <f:then>
                   <f:for each="{question.answers}" as="answer">

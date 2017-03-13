@@ -1,79 +1,103 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
 		<header/>
 		<body>
+			<trans-unit id="tx_easyquiz_label.language">
+				<source>Language</source>
+        <target>Sprache</target>
+			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quiz">
 				<source>Quiz</source>
+        <target>Quiz</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quiz.title">
 				<source>Title</source>
+        <target>Titel</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quiz.questions">
 				<source>Questions</source>
+        <target>Fragen</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quiz.results">
 				<source>Results</source>
+        <target>Ergebnisse</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_questions">
 				<source>Questions</source>
+        <target>Fragen</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_questions.title">
 				<source>Title</source>
+        <target>Frage</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_questions.question">
 				<source>Question</source>
+        <target>Fragen</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_questions.explanation">
 				<source>Explanation</source>
+        <target>Erklärung</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_questions.image">
 				<source>Image</source>
+        <target>Bild</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_questions.multiple_answers">
 				<source>Multiple Answers</source>
+        <target>Mehrere Antworten zulässig</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_questions.answers">
 				<source>Answers</source>
+        <target>Antworten</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_answers">
 				<source>Answers</source>
+        <target>Antworten</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_answers.answer">
 				<source>Answer</source>
+        <target>Antwort</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_answers.points">
 				<source>Points</source>
+        <target>Punkte</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_result">
 				<source>Result</source>
+        <target>Ergebnis</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_result.min_points">
 				<source>Min Points</source>
+        <target>Mindestpunktzahl</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_result.max_points">
 				<source>Max Points</source>
+        <target>Maximalpunktzahl</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_result.page">
 				<source>Page</source>
+        <target>Seite</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quizparticipation">
 				<source>Quiz Participation</source>
+        <target>Quiz-Teilnahme</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.session">
 				<source>Session</source>
+        <target>Session</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.user">
 				<source>User</source>
+        <target>Nutzer</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.quiz">
 				<source>Quiz</source>
+        <target>Qiz</target>
 			</trans-unit>
 			<trans-unit id="tx_easyquiz_domain_model_quizparticipation.answers">
 				<source>Answers</source>
-			</trans-unit>
-			<trans-unit id="tx_easyquiz.display_quiz.please_choose">
-				<source>Please Choose</source>
+        <target>Antworten</target>
 			</trans-unit>
 		</body>
 	</file>

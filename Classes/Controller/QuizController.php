@@ -91,7 +91,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $display['showExplanation'] =  $argumentDisplay['showExplanation'];
       }
       
-      // determin what to show next
+      // determine what to show next
       if($config['showExplanations']&&!$display['showExplanation']){
         $nextDisplay = array('question'=>$display['question'],'showExplanation'=>true);
       } else {
@@ -107,7 +107,6 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->quizParticipationRepository->add($quizParticipation);
       }
       
-      // get the answers
       if($this->request->hasArgument('question') && is_array($this->request->getArgument('question'))){
         foreach($this->request->getArgument('question') as $questionUid=>$questionResult){
           // get the question
@@ -125,15 +124,29 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
           // add new answers to quizParticipation
           if(is_array($questionResult['answer'])){
             // multiple answers
-            foreach($questionResult['answer'] as $answerUid){
-              $answer = $this->answersRepository->findByUid($answerUid);
-              $quizParticipation->addAnswer($answer);
+            if(count($questionResult['answer'])){
+              foreach($questionResult['answer'] as $answerUid){
+                $answer = $this->answersRepository->findByUid($answerUid);
+                $quizParticipation->addAnswer($answer);
+              }
             }
           } else{
+            // not multiple answers
             $answer = $this->answersRepository->findByUid($questionResult['answer']);
-            $quizParticipation->addAnswer($answer);
+            if($answer){
+              // but we got an answer - we add it to the participation
+              $quizParticipation->addAnswer($answer);
+            } else {
+              // we didnt get an answer - show the question again
+              $display = array('question'=>$this->request->getArgument('expectAnswersForQuestion'),'showExplanation'=>false);
+              $this->view->assign('inputMissing',true);
+            }
           }
         }
+      } else if($this->request->hasArgument('expectAnswersForQuestion')){
+        // we expected answers but didn't get any - show the question again
+        $display = array('question'=>$this->request->getArgument('expectAnswersForQuestion'),'showExplanation'=>false);
+        $this->view->assign('inputMissing',true);
       }
       
       if($display['question']>=count($quiz->getQuestions())){

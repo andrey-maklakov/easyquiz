@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2017-03-08T19:24:57Z" product-name="easyquiz">
 		<header/>
 		<body>
 			<trans-unit id="tx_easyquiz_domain_model_quiz">
@@ -74,6 +74,7 @@
 			</trans-unit>
 			<trans-unit id="tx_easyquiz.display_quiz.please_choose">
 				<source>Please Choose</source>
+        <target>Bitte wählen Sie</target>
 			</trans-unit>
 		</body>
 	</file>

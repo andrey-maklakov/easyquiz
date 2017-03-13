@@ -13,15 +13,23 @@ ChangeLog
 
 For more detailed information see the `commit listings at GitHub <https://github.com/zechendorf/easyquiz/commits/master>`_.
 
+1.1.0
+----------
+
+Ask again if not at least one answer given and some translation to German.
+
+
 1.0.2
 ----------
 
 Compatibility from 6.2.0 to 8.99.99.
 
+
 1.0.1
 ----------
 
 Minor Changes in Documentation.
+
 
 1.0.0
 ----------
