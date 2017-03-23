@@ -132,13 +132,19 @@ return array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_easyquiz_domain_model_questions',
 				'foreign_field' => 'quiz',
+        'foreign_sortby' => 'sorting_quiz',
 				'maxitems' => 9999,
 				'appearance' => array(
+          'useSortable' => true,
 					'collapseAll' => 1,
 					'levelLinksPosition' => 'top',
 					'showSynchronizationLink' => 1,
 					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
+					'showAllLocalizationLink' => 1,
+          'enabledControls' => array(
+            'dragdrop' => true,
+            'sort' => false
+          )
 				),
 			),
 
