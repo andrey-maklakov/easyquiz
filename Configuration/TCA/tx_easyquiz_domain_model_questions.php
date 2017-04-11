@@ -238,9 +238,11 @@ return array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_easyquiz_domain_model_answers',
 				'foreign_field' => 'questions',
+        'foreign_sortby' => 'sorting_questions',
 				'maxitems' => 9999,
 				'appearance' => array(
-					'collapseAll' => 0,
+          'useSortable' => true,
+					'collapseAll' => 1,
 					'levelLinksPosition' => 'top',
 					'showSynchronizationLink' => 1,
 					'showPossibleLocalizationRecords' => 1,

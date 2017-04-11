@@ -93,6 +93,7 @@ CREATE TABLE tx_easyquiz_domain_model_answers (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
+  sorting_questions int(11) DEFAULT '0' NOT NULL,
 
 	questions int(11) unsigned DEFAULT '0' NOT NULL,
 
