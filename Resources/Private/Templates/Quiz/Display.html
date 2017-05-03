@@ -1,43 +1,46 @@
 <f:for each="{quiz.questions}" as="question" iteration="iterator">
-  <f:if condition="{iterator.index}=={display.question}">
-    <div class="row">
-      <div class="col-xs-12{f:if(condition:question.image,then:' col-sm-8')}">
-        <h3>{question.title}</h3>
-        <f:form arguments="{quizParticipation:quizParticipation.uid, display:{question:nextDisplay.question,showExplanation:nextDisplay.showExplanation}}">
-          <f:if condition="{display.showExplanation}">
-            <f:then>
-              <f:format.html>{question.explanation}</f:format.html>
-            </f:then>
-            <f:else>
-              <f:form.hidden name="expectAnswersForQuestion" value="{display.question}" />
-              <f:format.html>{question.question}</f:format.html>
-              <f:if condition="{inputMissing}"><p><strong><f:translate key="tx_easyquiz.display_quiz.please_choose" /></strong></p></f:if>
-              <f:if condition="{question.multipleAnswers}">
-                <f:then>
-                  <f:for each="{question.answers}" as="answer">
-                    <div>
-                      <f:form.checkbox name="question[{question.uid}][answer][]" value="{answer.uid}" /> {answer.answer}
-                    </div>
-                  </f:for>
-                </f:then>
-                <f:else>
-                  <f:for each="{question.answers}" as="answer">
-                    <div>
-                      <f:form.radio name="question[{question.uid}][answer]" value="{answer.uid}" /> {answer.answer}
-                    </div>
-                  </f:for>
-                </f:else>
-              </f:if>
-            </f:else>
-          </f:if>
-          <f:form.submit value="weiter" />
-        </f:form>
-      </div>
-      <f:if condition="{question.image}">
-        <div class="hidden-xs col-sm-4">
-          <f:image src="{question.image.uid}" treatIdAsReference="true" alt="{question.title}" />
+    <f:if condition="{iterator.index}=={display.question}">
+        <div class="row">
+            <div class="col-xs-12{f:if(condition:question.image,then:' col-sm-8')}">
+                <h3>{question.title}</h3>
+                <f:form method="post">
+                    <f:form.hidden name="quizParticipation" value="{quizParticipation.uid}" />
+                    <f:form.hidden name="display[question]" value="{nextDisplay.question}" />
+                    <f:form.hidden name="display[showExplanation]" value="{nextDisplay.showExplanation}" />
+                    <f:if condition="{display.showExplanation}">
+                        <f:then>
+                            <f:format.html>{question.explanation}</f:format.html>
+                        </f:then>
+                        <f:else>
+                            <f:form.hidden name="expectAnswersForQuestion" value="{display.question}" />
+                            <f:format.html>{question.question}</f:format.html>
+                            <f:if condition="{inputMissing}"><p><strong><f:translate key="tx_easyquiz.display_quiz.please_choose" /></strong></p></f:if>
+                            <f:if condition="{question.multipleAnswers}">
+                                <f:then>
+                                    <f:for each="{question.answers}" as="answer">
+                                        <div>
+                                            <f:form.checkbox name="question[{question.uid}][answer][]" value="{answer.uid}" /> {answer.answer}
+                                        </div>
+                                    </f:for>
+                                </f:then>
+                                <f:else>
+                                    <f:for each="{question.answers}" as="answer">
+                                        <div>
+                                            <f:form.radio name="question[{question.uid}][answer]" value="{answer.uid}" /> {answer.answer}
+                                        </div>
+                                    </f:for>
+                                </f:else>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                    <f:form.submit value="weiter" />
+                </f:form>
+            </div>
+            <f:if condition="{question.image}">
+                <div class="hidden-xs col-sm-4">
+                    <f:image src="{question.image.uid}" treatIdAsReference="true" alt="{question.title}" />
+                </div>
+            </f:if>
         </div>
-      </f:if>
-    </div>
-  </f:if>
+    </f:if>
 </f:for>
