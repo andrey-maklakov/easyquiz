@@ -72,7 +72,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function displayAction()
     {
         // configuration
-        $config = array('showExplanations'=>true);
+        $config = array('showExplanations'=>!($this->settings['doNotShowAnswers']));
         
         // if there is a quiz defined in the plugin
         if($this->settings['entries']){
@@ -92,7 +92,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 }
                 
                 // determine what to show next
-                if($config['showExplanations']&&!$display['showExplanation']){
+                if($config['showExplanations'] && !$display['showExplanation']){
                     $nextDisplay = array('question'=>$display['question'],'showExplanation'=>true);
                 } else {
                     $nextDisplay = array('question'=>$display['question']+1,'showExplanation'=>false);
