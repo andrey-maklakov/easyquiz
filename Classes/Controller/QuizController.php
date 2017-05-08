@@ -140,6 +140,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                                 // we didnt get an answer - show the question again
                                 $display = array('question'=>$this->request->getArgument('expectAnswersForQuestion'),'showExplanation'=>false);
                                 $this->view->assign('inputMissing',true);
+                                $nextDisplay['question']--;
                             }
                         }
                     }
@@ -147,6 +148,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     // we expected answers but didn't get any - show the question again
                     $display = array('question'=>$this->request->getArgument('expectAnswersForQuestion'),'showExplanation'=>false);
                     $this->view->assign('inputMissing',true);
+                    $nextDisplay['question']--;
                 }
                 
                 if($display['question']>=count($quiz->getQuestions())){
