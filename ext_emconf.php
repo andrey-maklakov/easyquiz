@@ -11,24 +11,24 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Easy Quiz',
-	'description' => 'Frontend quiz, allowing for multiple questions.',
-	'category' => 'plugin',
-	'author' => 'Christopher Zechendorf',
-	'author_email' => 'christopher@zechendorf.com',
-	'state' => 'stable',
-	'internal' => '',
-	'uploadfolder' => '1',
-	'createDirs' => '',
-	'clearCacheOnLoad' => 0,
-	'version' => '1.4.1',
-	'constraints' => array(
-		'depends' => array(
-			'typo3' => '6.2.0-8.99.99',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
+    'title' => 'Easy Quiz',
+    'description' => 'Frontend quiz, allowing for multiple questions.',
+    'category' => 'plugin',
+    'author' => 'Christopher Zechendorf',
+    'author_email' => 'christopher@zechendorf.com',
+    'state' => 'stable',
+    'internal' => '',
+    'uploadfolder' => '1',
+    'createDirs' => '',
+    'clearCacheOnLoad' => 0,
+    'version' => '1.5.0',
+    'constraints' => array(
+        'depends' => array(
+            'typo3' => '6.2.0-8.99.99',
+        ),
+        'conflicts' => array(
+        ),
+        'suggests' => array(
+        ),
+    ),
 );
