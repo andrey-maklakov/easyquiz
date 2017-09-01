@@ -38,7 +38,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $title = '';
-    
+
     /**
      * questions
      *
@@ -47,7 +47,14 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $questions = null;
-    
+
+    /**
+     * recipientMail
+     *
+     * @var string
+     */
+    protected $recipientMail = '';
+
     /**
      * results
      *
@@ -56,7 +63,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $results = null;
-    
+
     /**
      * Returns the title
      *
@@ -66,7 +73,28 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->title;
     }
-    
+
+    /**
+     * Sets the recipientMail
+     *
+     * @param string $recipientMail
+     * @return void
+     */
+    public function setRecipientMail($recipientMail)
+    {
+        $this->recipientMail = $recipientMail;
+    }
+
+    /**
+     * Returns the recipientMail
+     *
+     * @return string $recipientMail
+     */
+    public function getRecipientMail()
+    {
+        return $this->recipientMail;
+    }
+
     /**
      * Sets the title
      *
@@ -77,7 +105,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->title = $title;
     }
-    
+
     /**
      * __construct
      */
@@ -86,7 +114,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
-    
+
     /**
      * Initializes all ObjectStorage properties
      * Do not modify this method!
@@ -100,7 +128,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->questions = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->results = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
-    
+
     /**
      * Adds a Questions
      *
@@ -111,7 +139,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->questions->attach($question);
     }
-    
+
     /**
      * Removes a Questions
      *
@@ -122,7 +150,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->questions->detach($questionToRemove);
     }
-    
+
     /**
      * Returns the questions
      *
@@ -132,7 +160,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->questions;
     }
-    
+
     /**
      * Sets the questions
      *
@@ -143,7 +171,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->questions = $questions;
     }
-    
+
     /**
      * Adds a Result
      *
@@ -154,7 +182,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->results->attach($result);
     }
-    
+
     /**
      * Removes a Result
      *
@@ -165,7 +193,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->results->detach($resultToRemove);
     }
-    
+
     /**
      * Returns the results
      *
@@ -175,7 +203,7 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->results;
     }
-    
+
     /**
      * Sets the results
      *
