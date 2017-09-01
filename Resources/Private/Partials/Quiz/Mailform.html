@@ -1,0 +1,15 @@
+<f:form method="post" id="easyquiz-mailform">
+    <f:form.hidden name="quizParticipation" value="{quizParticipation.uid}" />
+    <f:form.hidden name="display[question]" value="{nextDisplay.question}" />
+    <f:form.hidden name="display[showExplanation]" value="{nextDisplay.showExplanation}" />
+    <div class="row">
+        <div class="col-xs-12 col-sm-6"><f:form.textfield name="mailform[first_name]" placeholder="Vorname*" required="true" /></div>
+        <div class="col-xs-12 col-sm-6"><f:form.textfield name="mailform[last_name]" placeholder="Nachname*" required="true" /></div>
+        <div class="col-xs-12"><f:form.textfield name="mailform[email]" placeholder="E-Mail*" required="true" /></div>
+        <div class="col-xs-12"><f:form.checkbox name="mailform[agreement]" value="true" id="easyquiz-agree" /> * Ich bin damit einverstanden Informationen per E-Mail zu erhalten. Diese Einwilligung kann ich jederzeit schriftlich z. B. per Brief oder per E-Mail mit Wirkung für die Zukunft widerrufen. </div>
+        <div class="col-xs-12">
+            <f:form.submit value="Absenden" />
+        </div>
+    </div>
+</f:form>
+

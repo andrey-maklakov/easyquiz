@@ -1,0 +1,17 @@
+<f:if condition="{mailform}">
+    <p>
+        <f:for each="{mailform}" as="value" key="key">
+            <strong>{key}:</strong> {value}<br />
+        </f:for>
+    </p>
+</f:if>
+<f:if condition="{quizParticipation}">
+    <hr />
+    <h3>{quizParticipation.quiz.title}</h3>
+    <f:for each="{quizParticipation.answers}" as="answer">
+        <h4>{answer.questions.title}</h4>
+        <f:format.html>{answer.questions.question}</f:format.html>
+        <p><strong>{answer.answer}</strong></p>
+        <hr />
+    </f:for>
+</f:if>

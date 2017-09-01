@@ -23,10 +23,10 @@ return array(
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyquiz') . 'Resources/Public/Icons/tx_easyquiz_domain_model_quiz.gif'
     ),
     'interface' => array(
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, recipient_mail, questions, results',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, recipient_mail, require_form, questions, results',
     ),
     'types' => array(
-        '1' => array('showitem' => 'title, recipient_mail, questions, --div--;LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_domain_model_quiz.results;;;;1-1-1, results, --div--;LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_label.language,sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,  --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+        '1' => array('showitem' => 'title, recipient_mail, require_form, questions, --div--;LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_domain_model_quiz.results;;;;1-1-1, results, --div--;LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_label.language,sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,  --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
     ),
     'palettes' => array(
         '1' => array('showitem' => ''),
@@ -132,6 +132,13 @@ return array(
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'email'
+            ),
+        ),
+        'require_form' => array(
+            'exclude' => 1,
+            'label' => 'LLL:EXT:easyquiz/Resources/Private/Language/locallang_db.xlf:tx_easyquiz_domain_model_quiz.require_form',
+            'config' => array(
+                'type' => 'check'
             ),
         ),
         'questions' => array(

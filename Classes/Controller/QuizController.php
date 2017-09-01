@@ -31,7 +31,7 @@ namespace ZECHENDORF\Easyquiz\Controller;
  */
 class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-    
+
     /**
     * quizRepository
     *
@@ -39,7 +39,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     * @inject
     */
     protected $quizRepository = NULL;
-    
+
     /**
     * quizParticipationRepository
     *
@@ -47,7 +47,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     * @inject
     */
     protected $quizParticipationRepository = NULL;
-    
+
     /**
     * questionsRepository
     *
@@ -55,7 +55,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     * @inject
     */
     protected $questionsRepository = NULL;
-    
+
     /**
     * answersRepository
     *
@@ -73,31 +73,31 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         // configuration
         $config = array('showExplanations'=>!($this->settings['doNotShowAnswers']));
-        
+
         // if there is a quiz defined in the plugin
         if($this->settings['entries']){
             // get the quiz
             $uid = $this->settings['entries'];
             $quiz = $this->quizRepository->findByUid($this->settings['entries']);
-            
+
             if($quiz){
                 // default values for display and nextDisplay
                 $display = array('question'=>0,'showExplanation'=>0);
-                
+
                 // determine which question to show
                 if($this->request->hasArgument('display')){
                     $argumentDisplay = $this->request->getArgument('display');
                     $display['question'] = $argumentDisplay['question'];
                     $display['showExplanation'] =    $argumentDisplay['showExplanation'];
                 }
-                
+
                 // determine what to show next
                 if($config['showExplanations'] && !$display['showExplanation']){
                     $nextDisplay = array('question'=>$display['question'],'showExplanation'=>true);
                 } else {
                     $nextDisplay = array('question'=>$display['question']+1,'showExplanation'=>false);
                 }
-                
+
                 // get the quizParticipation
                 if($this->request->hasArgument('quizParticipation')){
                     $quizParticipation = $this->quizParticipationRepository->findByUid($this->request->getArgument('quizParticipation'));
@@ -106,12 +106,12 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     $quizParticipation = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('ZECHENDORF\\Easyquiz\\Domain\\Model\\QuizParticipation');
                     $this->quizParticipationRepository->add($quizParticipation);
                 }
-                
+
                 if($this->request->hasArgument('question') && is_array($this->request->getArgument('question'))){
                     foreach($this->request->getArgument('question') as $questionUid=>$questionResult){
                         // get the question
                         $question = $this->questionsRepository->findByUid($questionUid);
-                        
+
                         // remove all answers to that question from quizParticipation
                         foreach($quizParticipation->getAnswers() as $answer){
                             foreach($question->getAnswers() as $questionAnswer){
@@ -120,7 +120,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                                 }
                             }
                         }
-                        
+
                         // add new answers to quizParticipation
                         if(is_array($questionResult['answer'])){
                             // multiple answers
@@ -150,23 +150,59 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     $this->view->assign('inputMissing',true);
                     $nextDisplay['question']--;
                 }
-                
+
                 if($display['question']>=count($quiz->getQuestions())){
-                    // get the participants points
-                    $points = 0;
-                    foreach($quizParticipation->getAnswers() as $answer){
-                        $points += $answer->getPoints();
-                    }
-                    
-                    // check which result the participant matches 
-                    foreach($quiz->getResults() as $result){
-                        if($result->getMinPoints()<=$points && $result->getMaxPoints()>=$points){
-                            // the point range matches - we redirect
-                            $this->redirectToURI(
-                                $this->uriBuilder->reset()
-                                ->setTargetPageUid($result->getPage())
-                                ->build()
+                    // initialize the showForm variable...
+                    $display['showForm'] = false;
+
+                    // check if the form is to be shown
+                    if($quiz->isRequireForm() && $quiz->getRecipientMail()) {
+                        if($this->request->hasArgument('mailform')) {
+                            // get form information for mail
+                            $mailform = $this->request->getArgument('mailform');
+
+                            // build the mail..
+                            $mailBody = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Fluid\View\StandaloneView');
+
+                            $mailBody->setFormat('html');
+
+                            $mailBody->setTemplatePathAndFilename('typo3conf/ext/easyquiz/Resources/Private/Templates/Quiz/Mail.html');
+
+                            $mailBody->assignMultiple(
+                                array(
+                                    'quizParticipation' => $quizParticipation,
+                                    'mailform' => $mailform
+                                )
                             );
+
+                            $mail = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Mail\\MailMessage');
+                            $mail
+                                ->setSubject($quiz->getTitle())
+                                ->setTo($quiz->getRecipientMail())
+                                ->setBody($mailBody->render(),'text/html')
+                                ->send();
+                        } else {
+                            $display['showForm'] = true;
+                        }
+                    }
+
+                    if(!$display['showForm']){
+                        // get the participants points
+                        $points = 0;
+                        foreach($quizParticipation->getAnswers() as $answer){
+                            $points += $answer->getPoints();
+                        }
+
+                        // check which result the participant matches
+                        foreach($quiz->getResults() as $result){
+                            if($result->getMinPoints()<=$points && $result->getMaxPoints()>=$points){
+                                // the point range matches - we redirect
+                                $this->redirectToURI(
+                                    $this->uriBuilder->reset()
+                                    ->setTargetPageUid($result->getPage())
+                                    ->build()
+                                );
+                            }
                         }
                     }
                 }
@@ -177,7 +213,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $this->view->assign('display',$display);
                 $this->view->assign('nextDisplay',$nextDisplay);
                 $this->view->assign('quiz',$quiz);
-            }            
+            }
         }
     }
 

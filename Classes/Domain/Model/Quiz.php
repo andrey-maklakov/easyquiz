@@ -56,6 +56,13 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $recipientMail = '';
 
     /**
+     * requireForm
+     *
+     * @var bool
+     */
+    protected $requireForm = '';
+
+    /**
      * results
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\ZECHENDORF\Easyquiz\Domain\Model\Result>
@@ -72,6 +79,17 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 
     /**
@@ -96,15 +114,36 @@ class Quiz extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the title
+     * Returns the requireForm
      *
-     * @param string $title
+     * @return bool $requireForm
+     */
+    public function getRequireForm()
+    {
+        return $this->requireForm;
+    }
+
+    /**
+     * Sets the requireForm
+     *
+     * @param bool $requireForm
      * @return void
      */
-    public function setTitle($title)
+    public function setRequireForm($requireForm)
     {
-        $this->title = $title;
+        $this->requireForm = $requireForm;
     }
+
+    /**
+     * Returns the boolean state of requireForm
+     *
+     * @return bool
+     */
+    public function isRequireForm()
+    {
+        return $this->requireForm;
+    }
+
 
     /**
      * __construct

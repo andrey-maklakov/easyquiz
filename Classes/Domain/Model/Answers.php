@@ -31,6 +31,12 @@ namespace ZECHENDORF\Easyquiz\Domain\Model;
  */
 class Answers extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+    /**
+     * questions
+     *
+     * @var \ZECHENDORF\Easyquiz\Domain\Model\Questions
+     */
+    protected $questions = '';
 
     /**
      * answer
@@ -38,14 +44,35 @@ class Answers extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $answer = '';
-    
+
     /**
      * points
      *
      * @var int
      */
     protected $points = 0;
-    
+
+    /**
+     * Returns the questions
+     *
+     * @return \ZECHENDORF\Easyquiz\Domain\Model\Questions $questions
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * Sets the questions
+     *
+     * @param \ZECHENDORF\Easyquiz\Domain\Model\Questions $questions
+     * @return void
+     */
+    public function setQuestions($questions)
+    {
+        $this->questions = $questions;
+    }
+
     /**
      * Returns the answer
      *
@@ -55,7 +82,7 @@ class Answers extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->answer;
     }
-    
+
     /**
      * Sets the answer
      *
@@ -66,7 +93,7 @@ class Answers extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->answer = $answer;
     }
-    
+
     /**
      * Returns the points
      *
@@ -76,7 +103,7 @@ class Answers extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->points;
     }
-    
+
     /**
      * Sets the points
      *
