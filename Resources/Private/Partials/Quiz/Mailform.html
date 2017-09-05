@@ -12,4 +12,15 @@
         </div>
     </div>
 </f:form>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        if($('#easyquiz-agree').length){
+            $('#easyquiz-mailform').on('submit',function(e){
+                if(!$('#easyquiz-agree:checked').is(':checked')) {
+                    alert('Bitte stimmen Sie zu');
+                    e.preventDefault();
+                }
+            });
+        }
+    });
+</script>
