@@ -8,6 +8,7 @@
 <f:if condition="{quizParticipation}">
     <hr />
     <h3>{quizParticipation.quiz.title}</h3>
+    <p>{points} Punkte.</p>
     <f:for each="{quizParticipation.answers}" as="answer">
         <h4>{answer.questions.title}</h4>
         <f:format.html>{answer.questions.question}</f:format.html>

@@ -158,6 +158,12 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                     // check if the form is to be shown
                     if($quiz->isRequireForm() && $quiz->getRecipientMail()) {
                         if($this->request->hasArgument('mailform')) {
+
+                            $points = 0;
+                            foreach($quizParticipation->getAnswers() as $answer){
+                                $points += $answer->getPoints();
+                            }
+
                             // get form information for mail
                             $mailform = $this->request->getArgument('mailform');
 
@@ -171,6 +177,7 @@ class QuizController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                             $mailBody->assignMultiple(
                                 array(
                                     'quizParticipation' => $quizParticipation,
+                                    'points' => $points,
                                     'mailform' => $mailform
                                 )
                             );
