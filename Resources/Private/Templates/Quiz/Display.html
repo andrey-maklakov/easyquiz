@@ -1,3 +1,4 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:if condition="{quiz}">
     <f:for each="{quiz.questions}" as="question" iteration="iterator">
         <f:if condition="{iterator.index}=={display.question}">
@@ -39,10 +40,11 @@
                 </div>
                 <f:if condition="{question.image}">
                     <div class="hidden-xs col-sm-4">
-                        <f:image src="{question.image.uid}" treatIdAsReference="true" alt="{question.title}" />
+                        <f:image image="{question.image}" alt="{question.title}" />
                     </div>
                 </f:if>
             </div>
         </f:if>
     </f:for>
 </f:if>
+</html>

@@ -1,0 +1,21 @@
+{
+	"name": "zechendorf/easyquiz",
+	"type": "typo3-cms-extension",
+	"description": "Frontend quiz, allowing for multiple questions.",
+	"homepage": "",
+	"require": {
+		"typo3/cms-core": "^9.5"
+	},
+	"replace": {
+		"easyquiz": "self.version"
+	},
+	"conflict": {
+		"typo3/cms": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"ZECHENDORF\\Easyquiz\\": "Classes/"
+		}
+	},
+	"version": "9.5.0"
+}

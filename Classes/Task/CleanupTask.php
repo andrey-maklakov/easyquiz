@@ -1,49 +1,70 @@
 <?php
 namespace ZECHENDORF\Easyquiz\Task;
 
-/***************************************************************
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- *    Copyright notice
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *    (c) 2018 Christopher Zechendorf <christopher@zechendorf.com>, ZECHENDORF
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *    All rights reserved
- *
- *    This script is part of the TYPO3 project. The TYPO3 project is
- *    free software; you can redistribute it and/or modify
- *    it under the terms of the GNU General Public License as published by
- *    the Free Software Foundation; either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    The GNU General Public License can be found at
- *    http://www.gnu.org/copyleft/gpl.html.
- *
- *    This script is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.    See the
- *    GNU General Public License for more details.
- *
- *    This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
 /**
  * CleanupTask
  */
-class CleanupTask extends \TYPO3\CMS\Scheduler\Task\AbstractTask
+class CleanupTask extends AbstractTask
 {
+    /**
+     * @return bool
+     */
     public function execute()
     {
         // set deleteDate to yesterday
         $deleteDate = date('U') - 60 * 60 *24;
 
         // delete answers
-        $GLOBALS['TYPO3_DB']->sql_query('delete from tx_easyquiz_domain_model_answers where crdate < ' . $deleteDate);
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_easyquiz_domain_model_answers');
+
+        $queryBuilder
+            ->delete('tx_easyquiz_domain_model_answers')
+            ->where(
+                $queryBuilder->expr()->eq('crdate', $queryBuilder->createNamedParameter($deleteDate, \PDO::PARAM_INT))
+            )
+            ->execute();
+
 
         // delete quizparticipations_answers_mm
-        $GLOBALS['TYPO3_DB']->sql_query('delete from tx_easyquiz_quizparticipation_answers_mm where crdate < ' . $deleteDate);
+        /** @var QueryBuilder $queryBuilder */
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_easyquiz_quizparticipation_answers_mm');
+
+        $queryBuilder
+            ->delete('tx_easyquiz_quizparticipation_answers_mm')
+            ->where(
+                $queryBuilder->expr()->lt('crdate', $queryBuilder->createNamedParameter($deleteDate, \PDO::PARAM_INT))
+            )
+            ->execute();
+
 
         // delete quizparticipation
-        $GLOBALS['TYPO3_DB']->sql_query('delete from tx_easyquiz_domain_model_quizparticipation where crdate < ' . $deleteDate);
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_easyquiz_domain_model_quizparticipation');
+
+        $queryBuilder
+            ->delete('tx_easyquiz_domain_model_quizparticipation')
+            ->where(
+                $queryBuilder->expr()->lt('crdate', $queryBuilder->createNamedParameter($deleteDate, \PDO::PARAM_INT))
+            )
+            ->execute();
 
         return true;
     }
