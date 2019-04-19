@@ -20,6 +20,8 @@ use ZECHENDORF\Easyquiz\Domain\Model\QuizParticipation;
 use ZECHENDORF\Easyquiz\Domain\Model\Result;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Context\Context;
 
 /**
  * QuizController
@@ -72,7 +74,10 @@ class QuizController extends ActionController
 
         // if there is a quiz defined in the plugin
         if ($this->settings['entries']) {
-            // get the quiz
+            /**
+             * get the quiz
+             * @var \ZECHENDORF\Easyquiz\Domain\Model\Quiz $quiz
+             */
             $quiz = $this->quizRepository->findByUid($this->settings['entries']);
 
             if ($quiz) {
@@ -100,6 +105,17 @@ class QuizController extends ActionController
                     $this->quizParticipationRepository->update($quizParticipation);
                 } else {
                     $quizParticipation = $this->objectManager->get(QuizParticipation::class);
+
+                    $quizParticipation->setQuiz($quiz);
+                    $quizParticipation->setUser(GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id', 0));
+
+                    $pages = GeneralUtility::trimExplode(',', $this->configurationManager->getContentObject()->data['pages'], true);
+                    if (empty($pages)) {
+                        $quizParticipation->setPid($this->configurationManager->getContentObject()->data['pid']);
+                    } else {
+                        $quizParticipation->setPid($pages[0]);
+                    }
+
                     $this->quizParticipationRepository->add($quizParticipation);
                 }
 
